@@ -8,9 +8,12 @@ docker version
 docker info
 docker images
 
+docker-machine --version
+docker-compose --version
+
 # Run application
 docker run <app-name>
-docker run -p <host-port>:<container-port> -d <username>/<app-name>
+docker run -p <localhost-os-port>:<container-port> -d <username>/<app-name>
 
 # Process Status
 docker ps
@@ -20,4 +23,8 @@ docker logs <container id>
 
 docker build -t <username>/<app-name> .
 docker exec -it <container id> /bin/bash
+
+# Docker Hub login/logout
+docker login
+docker logout
 ```
