@@ -24,7 +24,23 @@ docker logs <container id>
 docker build -t <username>/<app-name> .
 docker exec -it <container id> /bin/bash
 
-# Docker Hub login/logout
+# Docker Hub(Image repository) login/logout
 docker login
 docker logout
+
+# Search for images
+docker search <image-name>
+docker search redis
+docker search nginx
+
+## Pull images from Hub
+# by default latest version
+docker pull <image-name>
+docker pull redis 
+
+# specific version
+docker pull python:2.7 
+
+# multiple or all the versions
+docker pull -a python
 ```
