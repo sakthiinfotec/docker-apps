@@ -43,4 +43,18 @@ docker pull python:2.7
 
 # multiple or all the versions
 docker pull -a python
+
+# Tag and push our custom image to Docker Hub
+docker tag <local-docker-image-id> <docker-hub-user>/<repository-name>[:<tag>]
+docker tag f639d0007050 sakthiinfotec/docker-node-web-app:2.5
+
+docker commit <local-container-id> <docker-hub-user>/<repository-name>[:<tag>]
+docker commit b1eb3e5363fc sakthiinfotec/docker-node-web-app:latest
+
+# Remove unused containers and images
+docker rm <container-id>
+docker rm 66ed57605ae6
+
+docker rmi <image-id>
+docker rmi 6fae60ef3446
 ```
