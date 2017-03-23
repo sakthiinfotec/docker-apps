@@ -3,7 +3,7 @@
 Docker is a containerization technology that enables us to cleanly abstract an environment configuration to a file (or set of files), and run it in a protected, isolated environment on a host. Docker allows us to package an application with all of its dependencies into a standardized unit, called a container, for software development. A container is a stripped-to-basics version of a Linux operating system.
 
 Frequently used Docker commands,
-```
+```sh
 docker version
 docker info
 docker images
@@ -60,13 +60,18 @@ docker image remove 6fae60ef3446
 ```
 #### Container Linking - Interconnecting or communicating between two container services
 Linking a container simply extracts the runtime information(such as IP address, exposed ports) of the dependent container service(Eg. MongoDB) and exposes that information into depending container(Eg. Node.js - Web API service).
-```
+```sh
+# Pull the latest mongo and node images from docker hub
+docker pull mongo
+docker pull node
+
+# Run and link the dependent container services
 docker run -d --name MongoDB mongo
 docker run --link=MongoDB:mongodb -it node /bin/bash
 ```
 Below is the runtime information of linked "MongoDB" container from a "Node.js" container
 
-```bash
+```sh
 root@a88d12df0fb7:/# cat /etc/hosts
 127.0.0.1       localhost
 ::1     localhost ip6-localhost ip6-loopback
