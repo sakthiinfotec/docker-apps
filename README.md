@@ -65,7 +65,7 @@ Linking a container simply extracts the runtime information(such as IP address, 
 docker pull mongo
 docker pull node
 
-# Run and link the dependent container services
+# Connecting the MongoDB container to the Node.js container using docker "container linking"
 docker run -d --name MongoDB mongo
 docker run --link=MongoDB:mongodb -it node /bin/bash
 ```
@@ -98,7 +98,7 @@ MONGODB_PORT_27017_TCP_ADDR=172.17.0.2
 From the above listed runtime environment variables, we are interested in only two entries such as IP(`MONGODB_PORT_27017_TCP_ADDR=172.17.0.2`) and PORT(`MONGODB_PORT_27017_TCP_PORT=27017`) to connect MongoDB from depending application.
 
 #### Linking or accessing from Node.js container service
-To access an environment details using `process.env` reference, where `process` is a global object provided by Node.js to access current process information.
+Access an environment details using `process.env` reference, where `process` is a global object provided by Node.js to access current process information.
 ```javascript
 const MONGODB_HOST = process.env.MONGODB_PORT_27017_TCP_ADDR;
 const MONGODB_PORT = process.env.MONGODB_PORT_27017_TCP_PORT;
