@@ -61,11 +61,11 @@ docker image remove 6fae60ef3446
 #### Container Linking - Interconnecting or communicating between two container services
 Linking a container simply extracts the runtime information(such as IP address, exposed ports) of the dependent container service(Eg. MongoDB) and exposes that information into depending container(Eg. Node.js - Web API service).
 ```sh
-# Pull the latest mongo and node images from docker hub
+# Pulling the latest MongoDB and Node.js official images from the docker hub
 docker pull mongo
 docker pull node
 
-# Connecting the MongoDB container to the Node.js container using docker "container linking"
+# Connecting the MongoDB container to the Node.js container using docker's "container linking" method
 docker run -d --name MongoDB mongo
 docker run --link=MongoDB:mongodb -it node /bin/bash
 ```
