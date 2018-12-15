@@ -58,6 +58,11 @@ docker rm 66ed57605ae6
 docker image remove <image-id>
 docker image remove 6fae60ef3446
 ```
+
+#### Attach Host's shared directory path with container
+In Windows `docker run --rm -it -v C:\Users\docker\data:/data alpine`  
+In Linux `docker run --rm -it -v /home/docker/data:/data alpine`
+
 #### Container Linking - Interconnecting or communicating between two container services
 Linking a container simply extracts the runtime information(such as IP address, exposed ports) of the dependent container service(Eg. MongoDB) and exposes that information into depending container(Eg. Node.js - Web API service).
 ```sh
