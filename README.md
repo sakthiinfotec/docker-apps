@@ -8,6 +8,9 @@ docker version
 docker info
 docker images
 
+# To list all running containers
+docker container ls --all
+
 docker-machine --version
 docker-compose --version
 
