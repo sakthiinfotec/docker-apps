@@ -55,8 +55,8 @@ docker commit b1eb3e5363fc sakthiinfotec/docker-node-web-app:latest
 docker rm <container-id>
 docker rm 66ed57605ae6
 
-docker image remove <image-id>
-docker image remove 6fae60ef3446
+docker image rm <image-id>
+docker image rm 6fae60ef3446
 ```
 
 #### Attach Host's shared directory path with container
