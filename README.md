@@ -117,3 +117,22 @@ const MONGODB_PORT = process.env.MONGODB_PORT_27017_TCP_PORT;
 private static final String MONGODB_HOST = System.getenv("MONGODB_PORT_27017_TCP_ADDR");
 private static final String MONGODB_PORT = System.getenv("MONGODB_PORT_27017_TCP_PORT");
 ```
+
+#### [Access docker container service over internet using ngrok docker image](https://medium.com/oracledevs/expose-docker-container-services-on-the-internet-using-the-ngrok-docker-image-3f1ea0f9c47a)
+
+Define a logical network `myngroknet` to link two or more containers together:  
+```sh
+docker network create myngroknet
+```
+
+Run a Docker Container called `www` based on the nginx image and associate it with the `mynrgoknet` network:  
+```sh
+docker run -d -p 80 -–network myngroknet -–name www nginx
+```
+
+Run a container called ngrok based on the ngrok container image. Associate the container with the `myngroknet` network; this enables the container to access container `www` using its container name as hostname (for example http://www). Expose port `4040` — where the ngrok inspection interface is accessed. Specify that ngrok should open a tunnel (expose a public url) for HTTP requests to port 80 on container `www`:
+
+```sh
+docker run -d -p 4040:4040 -–network myngroknet -–name ngrok wernight/ngrok ngrok http www:80
+curl $(docker port ngrok 4040)/api/tunnels # (or) http://0.0.0.0:4040/inspect/http
+```
